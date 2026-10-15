@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pedrosofilms.github.io/website/sitemap.xml
