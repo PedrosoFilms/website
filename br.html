@@ -423,6 +423,14 @@ h2{line-height:1.02}
 .chs{grid-template-columns:repeat(2,minmax(0,1fr));max-width:980px}
 /* manifesto line from narrativa_02 is longer: smaller type so it fits the pinned stage */
 #mtext{font-size:clamp(30px,3.9vw,68px);line-height:1.06;max-width:1180px;margin-inline:auto}
+/* manifesto: text only, one sentence per block, shorter measure */
+#manifesto{height:240vh}
+.chs{display:none!important}
+#mtext{font-size:clamp(30px,3.7vw,60px);line-height:1.05;max-width:21em;margin-inline:auto}
+#mtext .ln{display:block}
+#mtext .ln+.ln{margin-top:.55em}
+#mtext .ln:last-child .w.on{color:var(--red)}
+@media (max-width:900px){#manifesto{height:auto}#mtext{font-size:clamp(27px,7.6vw,42px);line-height:1.08;text-align:left}#mtext .ln+.ln{margin-top:.6em}}
 </style></head>
 <body class="locked v-holofote">
 <div class="grain" aria-hidden="true"></div>
@@ -455,7 +463,7 @@ h2{line-height:1.02}
 
 <section id="manifesto" aria-label="Manifesto"><div class="stg">
  <div class="mtx"><p class="kick mono" data-en="02 // Manifesto" data-pt="02 // Manifesto">02 // Manifesto</p><p id="mtext" data-en="Every creator needs a video professional. When that professional thinks like a creator, they stop just executing and start delivering results. The money is just the consequence." data-pt="Todo criador precisa de um profissional de vídeo. Quando esse profissional pensa como criador, ele para de só executar e passa a gerar resultado. O dinheiro é só a consequência.">Todo criador precisa de um profissional de vídeo. Quando esse profissional pensa como criador, ele para de só executar e passa a gerar resultado. O dinheiro é só a consequência.</p></div>
- <div class="chs"><figure class="ch" data-i="0"><div class="chm bw"><video data-auto muted loop playsinline preload="none" poster="assets/bts1.jpg" data-src="assets/bts1.mp4"></video></div><figcaption><b class="mono">2022</b><span class="chn" data-en="Advertising" data-pt="Publicidade">Publicidade</span><span class="chd" data-en="Moved into film for brands: narrative, direction, post-production." data-pt="Entrou no audiovisual para marcas: narrativa, direção, pós-produção.">Entrou no audiovisual para marcas: narrativa, direção, pós-produção.</span></figcaption></figure><figure class="ch" data-i="1"><div class="chm bw"><img src="assets/c_foto_monitor.webp" alt="Carlos Pedroso na ilha de edição" loading="lazy"></div><figcaption><b class="mono">2024</b><span class="chn" data-en="Studio" data-pt="Estúdio">Estúdio</span><span class="chd" data-en="Founded Pedroso Films, a post-production studio led by a creative director." data-pt="Fundou a Pedroso Films, um estúdio de pós-produção guiado por um diretor criativo.">Fundou a Pedroso Films, um estúdio de pós-produção guiado por um diretor criativo.</span></figcaption></figure></div>
+ <div class="chs"></div>
 </div></section>
 
 <section id="story" aria-label="Trajectory"><div class="stg">
@@ -663,7 +671,7 @@ const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelecto
 const R=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const store={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}},sget:k=>{try{return sessionStorage.getItem(k)}catch(e){return null}},sset:(k,v)=>{try{sessionStorage.setItem(k,v)}catch(e){}}};
 let L=document.documentElement.lang.startsWith('pt')?'pt':'en';
-function words(){const m=$('#mtext');m.innerHTML=m.textContent.split(/\s+/).map(w=>`<span class="w">${w}</span>`).join(' ')}
+function words(){const m=$('#mtext');m.innerHTML=m.textContent.trim().split(/(?<=[.!?])\s+/).map(t=>`<span class="ln">${t.split(/\s+/).map(w=>`<span class="w">${w}</span>`).join(' ')}</span>`).join('')}
 function lang(l){L=l;document.documentElement.lang=l==='pt'?'pt-BR':'en';
  $$('[data-en]').forEach(n=>{const v=n.getAttribute('data-'+l);if(n.hasAttribute('data-h'))n.innerHTML=v;else n.textContent=v});
  $$('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));words();paint()}
