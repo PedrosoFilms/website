@@ -1,9 +1,9 @@
 # Pedroso Films · site
 
-Site estático publicado pelo GitHub Pages, sem build.
+Site estático publicado pelo Cloudflare Pages (pedrosofilms.com), sem build.
 
-- `index.html`: versão em inglês (https://pedrosofilms.github.io/website/)
-- `pt.html`: versão em português (https://pedrosofilms.github.io/website/pt.html)
+- `index.html`: versão em inglês (https://pedrosofilms.com/)
+- `br.html`: versão em português (https://pedrosofilms.com/br)
 - `assets/`: vídeos, fotos e imagens. `logos/`: logo e favicon.
 - O botão EN / PT leva de uma página para a outra.
 
