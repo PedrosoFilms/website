@@ -589,6 +589,53 @@ h2{line-height:1.02}
 #bdsvg .trk{fill:none;stroke:#F2C200;stroke-width:1.4}
 #bdsvg .trk-t{font-family:var(--f-m,monospace);font-size:8.5px;fill:#F2C200;letter-spacing:.06em}
 @media (max-width:860px){#breakdown .bd-stick{grid-template-columns:1fr;align-content:center;gap:12px;padding-top:66px}#breakdown .bd-sub{display:none}.bd-draw{width:100%;border-radius:16px}.bd-steps li{padding:7px 12px}.bd-steps li span{display:none}#bdsvg .bd-t{font-size:8px}.bd-inset{width:26%;bottom:30px;right:10px}.bd-hud{max-width:66%;bottom:30px;left:10px}.bd-hud span{font-size:8px;padding:4px 7px}.bd-hud span:nth-child(n+3){display:none}.bd-draw .tag{font-size:8px}.bd-draw .tl{top:9px;left:10px}.bd-draw .tr{top:9px;right:10px}.bd-draw .bl{bottom:9px;left:10px}.bd-draw .br{bottom:9px;right:10px}.bd-phone{height:78%;border-radius:12px;padding:3px}.bd-phone video{border-radius:9px}.bd-phone span{font-size:7px}}
+
+/* CGI case: cinematic dark backdrop, Reels frame, results */
+.bd-bg{background:radial-gradient(110% 85% at 50% -8%,#2b2c33 0%,#141417 42%,#050506 100%),radial-gradient(60% 16% at 50% 97%,rgba(227,6,27,.2),transparent 72%);background-blend-mode:normal}
+.bd-draw.comp{box-shadow:0 30px 90px -40px rgba(227,6,27,.35)}
+.bd-res{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border:1px solid var(--bd-hair);border-radius:12px;overflow:hidden;background:var(--bd-hair)}
+.bd-res div{background:#0c0c0e;padding:9px 12px;display:grid;gap:2px}
+.bd-res b{font-family:var(--bd-h,inherit);font-weight:800;font-size:clamp(20px,2vw,28px);letter-spacing:-.03em;line-height:1;color:var(--bd-txt)}
+.bd-res span{font-family:var(--f-m,monospace);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bd-soft)}
+.bd-case{margin:0;max-width:44ch;font-size:13px;line-height:1.45;color:var(--bd-soft);opacity:.9}
+.rl{position:absolute;inset:5px;border-radius:15px;overflow:hidden;pointer-events:none;font-size:clamp(9px,.62vw + 5px,12px);color:#fff;background:linear-gradient(180deg,rgba(0,0,0,.4),transparent 16%,transparent 58%,rgba(0,0,0,.72))}
+.rl-top{position:absolute;left:12px;top:11px;font-weight:700;font-size:1.25em;letter-spacing:-.01em}
+.rl-rail{position:absolute;right:8px;bottom:16%;display:grid;gap:1.1em;justify-items:center}
+.rl-rail div{display:grid;justify-items:center;gap:2px;font-weight:600;font-size:.95em}
+.rl-rail svg{width:2.3em;height:2.3em;fill:#fff;filter:drop-shadow(0 1px 4px rgba(0,0,0,.5))}
+.rl-rail .lk svg{fill:#ff3b5c;animation:rlbeat 1.4s ease-in-out infinite}
+@keyframes rlbeat{0%,100%{transform:scale(1)}12%{transform:scale(1.22)}24%{transform:scale(1)}}
+.rl-cap{position:absolute;left:11px;right:46px;bottom:12px;display:grid;gap:.55em}
+.rl-who{display:flex;align-items:center;gap:.6em;font-weight:700}
+.rl-who img{width:2.2em;height:2.2em;border-radius:50%;background:#0d0d0f;padding:.35em;border:1.5px solid #E3061B;box-sizing:border-box}
+.rl-who i{font-style:normal;font-weight:600;font-size:.85em;border:1px solid rgba(255,255,255,.7);border-radius:6px;padding:.15em .6em}
+.rl-cap p{margin:0;font-size:.95em;line-height:1.3;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.rl-views{font-weight:600;font-size:.85em;opacity:.9;display:flex;align-items:center;gap:.4em}
+.rl-views svg{width:1em;height:1em;fill:#fff}
+.rl-hearts{position:absolute;right:6px;bottom:20%;width:44px;height:70%}
+.rl-hearts svg{position:absolute;bottom:0;right:var(--x,8px);width:var(--s,18px);height:var(--s,18px);fill:var(--c,#ff3b5c);opacity:0;animation:rlfloat var(--d,2.6s) ease-out forwards}
+@keyframes rlfloat{0%{transform:translate(0,0) scale(.4);opacity:0}12%{opacity:.95}100%{transform:translate(var(--sx,-14px),-100%) scale(1.1);opacity:0}}
+@media (prefers-reduced-motion:reduce){.rl-hearts svg,.rl-rail .lk svg{animation:none}}
+@media (max-width:860px){.bd-res div{padding:7px 9px}.bd-res b{font-size:20px}.bd-case{display:none}}
+
+/* card hover glow: spotlight + lit border that follow the cursor */
+@media (hover:hover){
+.pcard,.tk .glass{position:relative;overflow:hidden;transition:box-shadow .4s,border-color .4s}
+.pcard>*,.tk .glass>*{position:relative;z-index:1}
+.pcard::before,.tk .glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:0;transition:opacity .35s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(242,240,236,.10),rgba(227,6,27,.07) 38%,transparent 65%)}
+.pcard::after,.tk .glass::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:2;opacity:0;transition:opacity .35s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,92,92,.95),rgba(242,240,236,.55) 35%,transparent 65%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.pcard:hover::before,.pcard:hover::after,.tk .glass:hover::before,.tk .glass:hover::after{opacity:1}
+.pcard:hover{box-shadow:0 30px 80px -40px rgba(227,6,27,.45)}
+}
+
+/* plans: frosted glass cards overlap the headline and blur it behind them */
+#plans .wrap{position:relative}
+#plans h2.t{position:relative;z-index:1}
+#plans .pl{position:relative;z-index:2;margin-top:clamp(-52px,-3.6vw,-22px)}
+#plans .pl::before{content:"";position:absolute;left:-4%;right:-4%;top:-12%;height:70%;z-index:-1;pointer-events:none;background:radial-gradient(60% 100% at 30% 0%,rgba(242,240,236,.16),transparent 70%),radial-gradient(50% 90% at 78% 10%,rgba(227,6,27,.22),transparent 70%);filter:blur(30px);opacity:.9}
+#plans .pcard{background:linear-gradient(180deg,rgba(34,34,40,.42),rgba(10,10,12,.5));-webkit-backdrop-filter:blur(22px) saturate(1.35);backdrop-filter:blur(22px) saturate(1.35);border-color:rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 30px 70px -42px rgba(0,0,0,.9)}
+#plans .pcard.hot{box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 30px 80px -40px rgba(242,240,236,.3)}
+@media (max-width:900px){#plans .pl{margin-top:clamp(-26px,-5vw,-16px)}}
 </style>
 <section id="breakdown" aria-label="CGI breakdown" data-auto="1">
  <div class="bd-stick">
@@ -604,16 +651,16 @@ h2{line-height:1.02}
     <li><b>05</b><div data-h data-en="Track &amp; animation<span>Camera tracked from the drone plate. Hover, sway, weight.</span>" data-pt="Tracking e animação<span>Câmera rastreada da imagem de drone. Pairar, balanço, peso.</span>"></div></li>
     <li><b>06</b><div data-h data-en="Comp on real footage<span>A real shot with a 3D element in it. Grain, grade, delivered.</span>" data-pt="Composição na cena real<span>Cena real com elemento 3D aplicado. Grão, cor, entregue.</span>"></div></li>
    </ol>
-   <div class="bd-prog"><i></i></div>
+   <div class="bd-prog"><i></i></div><div class="bd-res"><div><b>100K+</b><span data-en="organic views" data-pt="views orgânicas">views orgânicas</span></div><div><b>1K+</b><span data-en="likes" data-pt="curtidas">curtidas</span></div><div><b>100s</b><span data-en="comments" data-pt="comentários">comentários</span></div></div><p class="bd-case" data-en="One of our biggest FOOH + CGI results: a short film for a retail company that significantly lifted its customer flow." data-pt="Um dos nossos maiores resultados em FOOH com CGI: um curta-metragem para uma empresa de varejo que aumentou significativamente o fluxo de clientes.">Um dos nossos maiores resultados em FOOH com CGI: um curta-metragem para uma empresa de varejo que aumentou significativamente o fluxo de clientes.</p>
    <span class="bd-addon"><i></i><span data-en="Custom-quoted · separate budget, outside the monthly hour cap" data-pt="Orçamento à parte · fora do teto mensal de horas">Orçamento à parte · fora do teto mensal de horas</span></span>
   </div>
   <div class="bd-draw" role="img" aria-label="Real 3D helicopter from a Pedroso Films job, exploded and taken through the CGI pipeline: model, UV, texture, light, tracking, composite on drone footage">
-   <div class="bd-stage"><img class="bd-plate" src="assets/bd_plate.webp" alt="" decoding="async"><div class="bd-heli"><div class="bd-part" data-p="rotor"><img class="w" src="assets/bd_rotor_wire.webp" alt="" decoding="async"><img class="c" src="assets/bd_rotor_clay.webp" alt="" decoding="async"><i class="ck" style="-webkit-mask-image:url(assets/bd_rotor_clay.webp);mask-image:url(assets/bd_rotor_clay.webp)"></i><img class="r" src="assets/bd_rotor_render.webp" alt="" decoding="async"><i class="gl" style="-webkit-mask-image:url(assets/bd_rotor_render.webp);mask-image:url(assets/bd_rotor_render.webp)"></i></div><div class="bd-part" data-p="cauda"><img class="w" src="assets/bd_cauda_wire.webp" alt="" decoding="async"><img class="c" src="assets/bd_cauda_clay.webp" alt="" decoding="async"><i class="ck" style="-webkit-mask-image:url(assets/bd_cauda_clay.webp);mask-image:url(assets/bd_cauda_clay.webp)"></i><img class="r" src="assets/bd_cauda_render.webp" alt="" decoding="async"><i class="gl" style="-webkit-mask-image:url(assets/bd_cauda_render.webp);mask-image:url(assets/bd_cauda_render.webp)"></i></div><div class="bd-part" data-p="fuselagem"><img class="w" src="assets/bd_fuselagem_wire.webp" alt="" decoding="async"><img class="c" src="assets/bd_fuselagem_clay.webp" alt="" decoding="async"><i class="ck" style="-webkit-mask-image:url(assets/bd_fuselagem_clay.webp);mask-image:url(assets/bd_fuselagem_clay.webp)"></i><img class="r" src="assets/bd_fuselagem_render.webp" alt="" decoding="async"><i class="gl" style="-webkit-mask-image:url(assets/bd_fuselagem_render.webp);mask-image:url(assets/bd_fuselagem_render.webp)"></i></div><div class="bd-part" data-p="esqui"><img class="w" src="assets/bd_esqui_wire.webp" alt="" decoding="async"><img class="c" src="assets/bd_esqui_clay.webp" alt="" decoding="async"><i class="ck" style="-webkit-mask-image:url(assets/bd_esqui_clay.webp);mask-image:url(assets/bd_esqui_clay.webp)"></i><img class="r" src="assets/bd_esqui_render.webp" alt="" decoding="async"><i class="gl" style="-webkit-mask-image:url(assets/bd_esqui_render.webp);mask-image:url(assets/bd_esqui_render.webp)"></i></div></div></div>
+   <div class="bd-stage"><div class="bd-plate bd-bg"></div><div class="bd-heli"><div class="bd-part" data-p="rotor"><img class="w" src="assets/bd_rotor_wire.webp" alt="" decoding="async"><img class="c" src="assets/bd_rotor_clay.webp" alt="" decoding="async"><i class="ck" style="-webkit-mask-image:url(assets/bd_rotor_clay.webp);mask-image:url(assets/bd_rotor_clay.webp)"></i><img class="r" src="assets/bd_rotor_render.webp" alt="" decoding="async"><i class="gl" style="-webkit-mask-image:url(assets/bd_rotor_render.webp);mask-image:url(assets/bd_rotor_render.webp)"></i></div><div class="bd-part" data-p="cauda"><img class="w" src="assets/bd_cauda_wire.webp" alt="" decoding="async"><img class="c" src="assets/bd_cauda_clay.webp" alt="" decoding="async"><i class="ck" style="-webkit-mask-image:url(assets/bd_cauda_clay.webp);mask-image:url(assets/bd_cauda_clay.webp)"></i><img class="r" src="assets/bd_cauda_render.webp" alt="" decoding="async"><i class="gl" style="-webkit-mask-image:url(assets/bd_cauda_render.webp);mask-image:url(assets/bd_cauda_render.webp)"></i></div><div class="bd-part" data-p="fuselagem"><img class="w" src="assets/bd_fuselagem_wire.webp" alt="" decoding="async"><img class="c" src="assets/bd_fuselagem_clay.webp" alt="" decoding="async"><i class="ck" style="-webkit-mask-image:url(assets/bd_fuselagem_clay.webp);mask-image:url(assets/bd_fuselagem_clay.webp)"></i><img class="r" src="assets/bd_fuselagem_render.webp" alt="" decoding="async"><i class="gl" style="-webkit-mask-image:url(assets/bd_fuselagem_render.webp);mask-image:url(assets/bd_fuselagem_render.webp)"></i></div><div class="bd-part" data-p="esqui"><img class="w" src="assets/bd_esqui_wire.webp" alt="" decoding="async"><img class="c" src="assets/bd_esqui_clay.webp" alt="" decoding="async"><i class="ck" style="-webkit-mask-image:url(assets/bd_esqui_clay.webp);mask-image:url(assets/bd_esqui_clay.webp)"></i><img class="r" src="assets/bd_esqui_render.webp" alt="" decoding="async"><i class="gl" style="-webkit-mask-image:url(assets/bd_esqui_render.webp);mask-image:url(assets/bd_esqui_render.webp)"></i></div></div></div>
    <svg id="bdsvg" aria-hidden="true"></svg><div class="bd-grain"></div>
    <span class="tag tl">RETAIL HELI v2 · EC135</span><span class="tag tr" id="bdpass">PASS 01/06 · MODEL</span><span class="tag bl">PEDROSO FILMS · CGI BREAKDOWN</span><span class="tag br" id="bdtc">00:00:00:00</span>
    <div class="bd-hud" id="bdhud"></div>
    <div class="bd-inset" id="bdinset"><span class="cap" id="bdicap">UV LAYOUT</span><canvas id="bduv" width="300" height="300" data-uv="assets/bd_uv_outer.webp assets/bd_uv_back.webp assets/bd_uv_inner.webp assets/bd_uv_rotor.webp"></canvas></div>
-   <div class="bd-phone" id="bdphone"><span data-en="Final · Reels 9:16" data-pt="Final · Reels 9:16">Final · Reels 9:16</span><video muted loop playsinline preload="none" poster="assets/l_findz.jpg" data-src="assets/l_findz.mp4"></video></div>
+   <div class="bd-phone" id="bdphone"><span data-en="Final · Reels 9:16" data-pt="Final · Reels 9:16">Final · Reels 9:16</span><video muted loop playsinline preload="none" poster="assets/l_findz.jpg" data-src="assets/l_findz.mp4"></video><div class="rl"><div class="rl-top">Reels</div><div class="rl-rail"><div class="lk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.3 10.6 20C5.400 15.300 2 12.200 2 8.400 2 5.300 4.400 3 7.500 3c1.700 0 3.400.8 4.500 2.100C13.100 3.800 14.800 3 16.500 3 19.600 3 22 5.300 22 8.400c0 3.800-3.400 6.900-8.600 11.600z"/></svg><b>1K+</b></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><b>100s</b></div><div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 3 2 10.500l7 3L12 21l3.500-7z"/></svg></div></div><div class="rl-cap"><div class="rl-who"><img src="logos/oficial/simbolo-raio-ponto-branco.svg" alt=""><b>Pedroso Films</b><i data-en="Follow" data-pt="Seguir">Seguir</i></div><p>Retail · FOOH + CGI</p><div class="rl-views"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg><span data-en="100K+ views" data-pt="100K+ visualizações">100K+ visualizações</span></div></div><div class="rl-hearts" id="bdhearts"></div></div></div>
   </div>
  </div>
 </section>
@@ -791,9 +838,9 @@ const STAGES = [
   { pass: 'MODEL', hud: ['EC135 · <b>4</b> PARTS EXPLODED', 'CINEMA 4D', 'WIREFRAME'], inset: null },
   { pass: 'UV MAPPING', hud: ['UV · 0–1 SPACE', 'CHECKER TEST', '<b>4</b> TEXTURE SETS'], inset: 'UV · EC135' },
   { pass: 'TEXTURE + MATERIAL', hud: ['BASE COLOR · LIVERY', 'PAINT · CLEARCOAT', 'METAL · GLASS · RUBBER'], inset: 'TEXTURE MAPS' },
-  { pass: 'LIGHT + REFLECTION', hud: ['SUN MATCHED TO PLATE', 'REFLECTIONS <b>ON</b>', 'ALPHA PASS'], inset: 'LIGHT RIG' },
-  { pass: 'TRACK + ANIMATION', hud: ['CAMERA TRACK · <b>AE</b>', 'DRONE PLATE', 'HOVER + SWAY'], inset: 'GRAPH EDITOR' },
-  { pass: 'COMP', hud: ['PLATE · <b>REAL</b> DRONE FOOTAGE', 'CGI · EC135', 'GRADE + GRAIN MATCHED'], inset: null },
+  { pass: 'LIGHT + REFLECTION', hud: ['KEY + <b>RIM</b> LIGHT', 'REFLECTIONS <b>ON</b>', 'ALPHA PASS'], inset: 'LIGHT RIG' },
+  { pass: 'TRACK + ANIMATION', hud: ['CAMERA TRACK · <b>AE</b>', 'SCENE LAYOUT', 'HOVER + SWAY'], inset: 'GRAPH EDITOR' },
+  { pass: 'COMP', hud: ['CGI · EC135', '<b>CINEMATIC</b> GRADE', 'GRAIN MATCHED'], inset: null },
 ];
 const UV = (uvc.dataset.uv || '').split(' ').filter(Boolean).map(src => { const i = new Image(); i.decoding = 'async'; i.src = src; return i; });
 const UVN = ['BODY_OUTER', 'BACK', 'BODY_INNER', 'ROTOR'];
@@ -904,8 +951,15 @@ new IntersectionObserver(es => es.forEach(e => visible = e.isIntersecting), { ro
 const AUTO = sec.dataset.auto === '1'; let ap = 0;
 if (AUTO) steps.forEach((li, i) => li.addEventListener('click', () => { ap = i / 6 + .02; }));
 function loop() { const n = performance.now(), dt = Math.min(.05, (n - clock) / 1000); clock = n;
-  if (visible && !document.hidden) { let p; if (AUTO) { ap += R ? 0 : dt / 12; if (ap > 1.35) ap = 0; p = R ? .97 : Math.min(1, ap); } else p = R ? .6 : prog(); frame(p, R ? 0 : dt); }
+  if (visible && !document.hidden) { let p; if (AUTO) { ap += R ? 0 : dt / 7; if (ap > 1.7) ap = 0; p = R ? .97 : Math.min(1, ap); } else p = R ? .6 : prog(); frame(p, R ? 0 : dt); }
   requestAnimationFrame(loop); }
+/* floating hearts over the Reels frame, only while the final is on screen */
+const hearts = document.getElementById('bdhearts');
+if (hearts && !R) setInterval(() => { if (!visible || document.hidden || !phone.classList.contains('on') || hearts.childElementCount > 14) return;
+  const h = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); h.setAttribute('viewBox', '0 0 24 24'); h.innerHTML = '<path d="M12 21.3 10.6 20C5.400 15.300 2 12.200 2 8.400 2 5.300 4.400 3 7.500 3c1.700 0 3.400.8 4.500 2.100C13.100 3.800 14.800 3 16.500 3 19.600 3 22 5.300 22 8.400c0 3.800-3.400 6.900-8.600 11.600z"/>';
+  const r = Math.random(); h.style.setProperty('--s', (12 + r * 16).toFixed(0) + 'px'); h.style.setProperty('--x', (Math.random() * 20).toFixed(0) + 'px'); h.style.setProperty('--sx', (-8 - Math.random() * 26).toFixed(0) + 'px');
+  h.style.setProperty('--d', (2.2 + Math.random() * 1.4).toFixed(2) + 's'); h.style.setProperty('--c', r > .75 ? '#fff' : r > .4 ? '#ff3b5c' : '#E3061B');
+  h.addEventListener('animationend', () => h.remove()); hearts.appendChild(h); }, 260);
 window.BD_SET = p => { size(); frame(p, 1 / 60); }; // test hook
 loop();
 }
@@ -981,4 +1035,8 @@ document.querySelectorAll('.ba').forEach(ba=>{const st=ba.querySelector('.ba-sta
 const set=o=>{p.hidden=!o;b.setAttribute('aria-expanded',o);document.documentElement.style.overflow=o?'hidden':''};
 b.addEventListener('click',()=>set(p.hidden));p.querySelector('.ixx').addEventListener('click',()=>set(false));
 p.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a){set(false)}else if(e.target===p)set(false)});
-addEventListener('keydown',e=>{if(e.key==='Escape'&&!p.hidden)set(false)});})();</script></body></html>
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!p.hidden)set(false)});})();</script><script>
+/* card glow follows the cursor */
+document.querySelectorAll('.pcard,.tk .glass').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+</script>
+</body></html>
