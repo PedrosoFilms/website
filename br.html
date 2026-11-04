@@ -196,7 +196,7 @@ h1,h2,h3,h4{text-wrap:balance}
 .pfoot{margin-top:18px;color:var(--mute);text-align:center}
 @media (max-width:900px){.pl{grid-template-columns:1fr}}
 /* radial timeline */
-#story{position:relative;height:300vh;--R:min(42svh,(100svh - 200px)/1.7);--hx:calc(100svh * .805 * .485);--hy:calc(120px + var(--R) * .74)}
+#story{position:relative;height:300vh;--R:min(42svh,(100svh - 200px)/1.7);--hx:calc(100svh * .805 * .485);--hy:calc(150px + var(--R) * .74)}
 #story .stg{position:sticky;top:0;height:100svh;overflow:hidden;background:linear-gradient(#e9e9e8 0,#efefee 40%,#ecebeb 80%,#b7b6b6 83.2%,#7c7b7b 88%,#6a6a6a 100%);color:#111}
 #story .pfw{position:absolute;left:0;top:0;height:100svh;aspect-ratio:1856/2304;-webkit-mask:linear-gradient(90deg,#000 80%,transparent);mask:linear-gradient(90deg,#000 80%,transparent)}
 #story .pfw img{width:100%;height:100%;object-fit:cover;display:block}
@@ -469,7 +469,7 @@ a[data-chat][href=""]{display:none!important}
 .lbx-yt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-#more.more-cont{padding-top:0}html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style><style>h2.t .ln{display:block}h2.t .ln+.ln{margin-top:.12em}h2.t .imp{color:var(--red)}#plans h2.t .ln{display:inline}</style><style>
+#more.more-cont{padding-top:0}html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}.fchat.hh{opacity:0;transform:translateY(12px);pointer-events:none}</style><style>h2.t .ln{display:block}h2.t .ln+.ln{margin-top:.12em}h2.t .imp{color:var(--red)}#plans h2.t .ln{display:inline}</style><style>
 #plans .pl::before{opacity:.45;filter:blur(40px)}
 #plans .pcard{padding:clamp(26px,2.2vw,36px);gap:18px;background:linear-gradient(180deg,rgba(24,24,28,.78),rgba(6,6,8,.86));-webkit-backdrop-filter:blur(26px) saturate(1.2);backdrop-filter:blur(26px) saturate(1.2);border-color:rgba(255,255,255,.14)}
 #plans .pcard .k{font-size:13px;color:#b9b9bd}
@@ -1153,4 +1153,4 @@ box.addEventListener('click',e=>{if(e.target===box||e.target.closest('.lbx-x'))s
 /* contato direto: o botão flutuante some quando a seção de contato está na tela */
 (()=>{const f=document.querySelector('.fchat'),c=document.getElementById('contact');if(!f||!c||!('IntersectionObserver' in window))return;new IntersectionObserver(([e])=>f.classList.toggle('off',e.isIntersecting),{threshold:.25}).observe(c)})();
 </script>
-</body></html>
+<script>(()=>{const fc=document.querySelector('.fchat'),ha=document.querySelector('#hero .ha');if(!fc||!ha||!('IntersectionObserver'in window))return;new IntersectionObserver(es=>es.forEach(e=>fc.classList.toggle('hh',e.isIntersecting&&innerWidth<760))).observe(ha)})();</script></body></html>
